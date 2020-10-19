@@ -1,8 +1,8 @@
 name: image_swipe
 description: A new Flutter package project.
 version: 0.0.1
-author:
-homepage:
+author: Mohammad Fajar Ainul Bashri<fajar.bashri@gmail.com>
+homepage: github.com/coconutzdev/image_swipe
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
