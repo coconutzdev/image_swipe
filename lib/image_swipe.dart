@@ -5,9 +5,10 @@ import 'package:image_swipe/card_scroll_widget.dart';
 
 class ImageSwipe extends StatefulWidget{
   List<String> images;
+  List<String> titles;
   bool reverseImages;
 
-  ImageSwipe({@required this.images, this.reverseImages = true});
+  ImageSwipe({@required this.images, this.reverseImages = true, this.titles});
 
   @override
   _ImageSwipeState createState() => _ImageSwipeState();
@@ -38,6 +39,7 @@ class _ImageSwipeState extends State<ImageSwipe> {
         CardScrollWidget(
             currentPage,
             widget.reverseImages ? widget.images.reversed.toList() : widget.images,
+            widget.titles ?? [],
             12.0 / 16.0,
             (12.0 / 16.0) * 1.2
         ),

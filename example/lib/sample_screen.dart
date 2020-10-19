@@ -21,6 +21,12 @@ class _SampleScreenState extends State<SampleScreen> {
           'assets/sample_03.jpg',
           'assets/sample_04.jpg',
         ],
+        titles: [
+          'Sample Title 01',
+          'Sample Title 02',
+          'Sample Title 03',
+          'Sample Title 04'
+        ],
         reverseImages: false,
       ),
     );
