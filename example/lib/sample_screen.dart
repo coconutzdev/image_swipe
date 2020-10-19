@@ -21,6 +21,7 @@ class _SampleScreenState extends State<SampleScreen> {
           'assets/sample_03.jpg',
           'assets/sample_04.jpg',
         ],
+        reverseImages: false,
       ),
     );
   }
