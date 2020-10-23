@@ -3,12 +3,15 @@ library image_swipe;
 import 'package:flutter/material.dart';
 import 'package:image_swipe/card_scroll_widget.dart';
 
+typedef OnClickItem = void Function(BuildContext context, int index, String image, String title);
+
 class ImageSwipe extends StatefulWidget{
   List<String> images;
   List<String> titles;
   bool reverseImages;
+  OnClickItem onClickItem;
 
-  ImageSwipe({@required this.images, this.reverseImages = true, this.titles});
+  ImageSwipe({@required this.images, this.reverseImages = true, this.titles, this.onClickItem});
 
   @override
   _ImageSwipeState createState() => _ImageSwipeState();
@@ -49,7 +52,16 @@ class _ImageSwipeState extends State<ImageSwipe> {
             controller: pageController,
             reverse: true,
             itemBuilder: (context, index) {
-              return Container();
+              return GestureDetector(
+                onTap: (){
+                  if(widget.onClickItem!=null){
+                    widget.onClickItem(context, index, widget.images[index], widget.titles[index]);
+                  }
+                },
+                child: Container(
+                  color: Colors.transparent,
+                )
+              );
             },
           ),
         )
