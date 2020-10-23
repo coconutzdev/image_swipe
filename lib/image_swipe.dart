@@ -37,11 +37,11 @@ class _ImageSwipeState extends State<ImageSwipe> {
     return Stack(
       children: <Widget>[
         CardScrollWidget(
-            currentPage,
-            widget.reverseImages ? widget.images.reversed.toList() : widget.images,
-            widget.titles ?? [],
-            12.0 / 16.0,
-            (12.0 / 16.0) * 1.2
+          currentPage: currentPage,
+          images: widget.reverseImages ? widget.images.reversed.toList() : widget.images,
+          titles: widget.titles ?? [],
+          cardAspectRatio: 12.0 / 16.0,
+          aspectRatio: (12.0 / 16.0) * 1.2,
         ),
         Positioned.fill(
           child: PageView.builder(

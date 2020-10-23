@@ -6,13 +6,14 @@ class CardScrollWidget extends StatelessWidget {
   var currentPage;
   var padding = 20.0;
   var verticalInset = 20.0;
-  double aspectRatio;
-  double cardAspectRatio;
-  List<String> images;
-  List<String> titles;
+  double aspectRatio = (12.0 / 16.0) * 1.2;
+  double cardAspectRatio = 12.0 / 16.0;
+  List<String> images = [];
+  List<String> titles = [];
 
-  CardScrollWidget(this.currentPage, this.images,  this.titles, this.cardAspectRatio, this.aspectRatio)
+  CardScrollWidget({@required this.currentPage, @required this.images,  this.titles, this.cardAspectRatio, this.aspectRatio})
       :
+        assert(currentPage!=null),
         assert(images.isNotEmpty),
         assert(titles.length > 0 ? titles.length == images.length : true)
   ;
