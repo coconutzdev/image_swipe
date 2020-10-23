@@ -28,6 +28,9 @@ class _SampleScreenState extends State<SampleScreen> {
           'Sample Title 04'
         ],
         reverseImages: false,
+        onClickItem: (context, index, image, title){
+          Scaffold.of(context).showSnackBar(new SnackBar(content: Text('Index : ${index} \nImage : ${image} \nTitle : ${title}')));
+        },
       ),
     );
   }
