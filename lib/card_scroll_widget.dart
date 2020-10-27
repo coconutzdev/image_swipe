@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:image_swipe/image_swipe.dart';
 
 class CardScrollWidget extends StatelessWidget {
   var currentPage;
@@ -10,8 +11,9 @@ class CardScrollWidget extends StatelessWidget {
   double cardAspectRatio = 12.0 / 16.0;
   List<String> images = [];
   List<String> titles = [];
+  ImageSwipeItemBuilder builder;
 
-  CardScrollWidget({@required this.currentPage, @required this.images,  this.titles, this.cardAspectRatio, this.aspectRatio})
+  CardScrollWidget({@required this.currentPage, @required this.images,  this.titles, this.cardAspectRatio, this.aspectRatio, this.builder})
       :
         assert(currentPage!=null),
         assert(images.isNotEmpty),
@@ -47,11 +49,16 @@ class CardScrollWidget extends StatelessWidget {
             bottom: padding + verticalInset * max(-delta, 0.0),
             start: start,
             textDirection: TextDirection.rtl,
-            child: ClipRRect(
+            child: builder != null ?
+              AspectRatio(
+                  aspectRatio: cardAspectRatio,
+                  child: builder(context, contraints, i, images[i], titles[i]) ,
+              ) :
+              ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                           color: Colors.black12,
@@ -84,7 +91,8 @@ class CardScrollWidget extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            )
+            ,
           );
           cardList.add(cardItem);
         }

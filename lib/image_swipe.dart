@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:image_swipe/card_scroll_widget.dart';
 
 typedef OnClickItem = void Function(BuildContext context, int index, String image, String title);
+typedef ImageSwipeItemBuilder = Widget Function(BuildContext context, BoxConstraints constraints, int index, String image, String title);
 
 class ImageSwipe extends StatefulWidget{
   List<String> images;
   List<String> titles;
   bool reverseImages;
   OnClickItem onClickItem;
+  ImageSwipeItemBuilder builder;
 
-  ImageSwipe({@required this.images, this.reverseImages = true, this.titles, this.onClickItem});
+  ImageSwipe({@required this.images, this.reverseImages = true, this.titles, this.onClickItem, this.builder});
 
   @override
   _ImageSwipeState createState() => _ImageSwipeState();
@@ -45,6 +47,7 @@ class _ImageSwipeState extends State<ImageSwipe> {
           titles: widget.titles ?? [],
           cardAspectRatio: 12.0 / 16.0,
           aspectRatio: (12.0 / 16.0) * 1.2,
+          builder: widget.builder,
         ),
         Positioned.fill(
           child: PageView.builder(
