@@ -31,6 +31,27 @@ class _SampleScreenState extends State<SampleScreen> {
         onClickItem: (context, index, image, title){
           Scaffold.of(context).showSnackBar(new SnackBar(content: Text('Index : ${index} \nImage : ${image} \nTitle : ${title}')));
         },
+        builder: (context, constrains, index, image, title){
+          return Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.asset(image, fit: BoxFit.cover),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                      title,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 25.0,
+                      )),
+                ),
+              )
+            ],
+          );
+        },
       ),
     );
   }
